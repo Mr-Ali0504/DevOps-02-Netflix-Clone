@@ -1,12 +1,59 @@
-replicaCount: 1
+# values.yaml
 
+# Image configuration
 image:
-  repository: asgaralia/netflix
+  repository: netflix
   tag: latest
   pullPolicy: IfNotPresent
 
+# Environment variables
+env:
+  TMDB_V3_API_KEY: "91c29fe64e3cabba44610671403414f0"
+
+# Replica count
+replicaCount: 1
+
+# Service configuration
 service:
   type: ClusterIP
   port: 80
+  targetPort: 3000
 
-resources: {}
+# Resources (optional)
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+# Liveness and readiness probes
+livenessProbe:
+  enabled: true
+  path: /
+  port: 3000
+
+readinessProbe:
+  enabled: true
+  path: /
+  port: 3000
+
+# Ingress (optional)
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: netflix.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+# NodeSelector, Tolerations, Affinity (optional)
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
