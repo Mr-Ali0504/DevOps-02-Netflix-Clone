@@ -1,0 +1,5 @@
+apiVersion: v2
+name: netflix-chart
+description: A Helm chart to deploy the Netflix image
+version: 0.1.0
+appVersion: "latest"
