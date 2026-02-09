@@ -5,7 +5,7 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   selector:
-    app: {{ .Chart.Name }}
+    app: {{ .Release.Name }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 80

@@ -8,7 +8,7 @@ image:
 
 # Environment variables
 env:
-  TMDB_V3_API_KEY: "91c29fe64e3cabba44610671403414f0"
+  TMDB_V3_API_KEY: ""
 
 # Replica count
 replicaCount: 1
@@ -17,7 +17,7 @@ replicaCount: 1
 service:
   type: ClusterIP
   port: 80
-  targetPort: 3000
+  targetPort: 80
 
 # Resources (optional)
 resources:
@@ -32,12 +32,12 @@ resources:
 livenessProbe:
   enabled: true
   path: /
-  port: 3000
+  port: 80
 
 readinessProbe:
   enabled: true
   path: /
-  port: 3000
+  port: 80
 
 # Ingress (optional)
 ingress:
